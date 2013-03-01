@@ -1,0 +1,66 @@
+
+/*
+
+
+*/
+
+.hidden {
+	height: 		0;
+	overflow:		hidden;
+}
+.breaker {
+	clear:			both;
+	height:			5em;
+}
+
+
+.panel {
+	background-color: blue;
+	box-shadow:  	2px 2px 5px 1px #444;
+}
+.panel-bottom, .panel-top {
+	margin:  		auto 6%;
+	position:		fixed;
+}
+.panel-top {
+	top:			0;
+}
+.panel-bottom {
+	bottom:			0;
+}
+
+.panel-intro, .panel-body {
+	margin:			auto 2em;
+}
+.panel-body {
+	overflow:		hidden;
+}
+.panel-body :first-child {
+	margin-top:		0;
+}
+
+
+.panel-trigger{
+	background-color: red;
+}
+.trigger-slide {
+	position:		absolute;
+}
+.trigger-fixed {
+	position:		fixed;
+}
+.trigger-bottom {
+	bottom:			-0.5em;
+}
+.trigger-left {
+	left:			5em;
+}
+.trigger-right {
+	right:			5em;
+}
+.trigger-top {
+	top:			0;
+
+}
+
+
