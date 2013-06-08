@@ -73,7 +73,7 @@
 
         thisPanel.removeData("slidingPanel");
 
-        thisPanel.removeClass("panel-top panel-bottom");
+        thisPanel.removeClass("panel-top panel-bottom panel-left panel-right");
 
         thisBody.removeClass("hidden");
 
@@ -129,6 +129,8 @@
     /**
      * This function is for applying CSS styling based on the options.
      * It should only be called from _applyOptions() and not called directly.
+     * 
+     * There has to be a way better for checking these classes...
      */
     _applyClasses: function( thisPanel ) {
       var options     = SlidingPanel.options();
@@ -140,24 +142,32 @@
       thisBody.addClass("hidden");
 
       switch( options.panelPosition ) {
-        case "top":
-          thisPanel.removeClass( "panel-bottom" );
-          thisPanel.addClass( "panel-top" );
-          break;
         case "bottom":
-          thisPanel.removeClass( "panel-top" );
+          thisPanel.removeClass( "panel-left panel-right panel-top" );
           thisPanel.addClass( "panel-bottom" );
+          break;
+        case "left":
+          thisPanel.removeClass( "panel-bottom panel-right panel-top" );
+          thisPanel.addClass( "panel-bottom" );
+          break;
+        case "right":
+          thisPanel.removeClass( "panel-bottom panel-left panel-top" );
+          thisPanel.addClass( "panel-bottom" );
+          break;
+        case "top":
+          thisPanel.removeClass( "panel-bottom panel-left panel-right" );
+          thisPanel.addClass( "panel-top" );
           break;
       }
       
       switch( options.triggerSlide ) {
         case true:
-          thisTrigger.removeClass( "trigger-fixed" );
+          thisTrigger.removeClass( "trigger-notslide" );
           thisTrigger.addClass( "trigger-slide" );
           break;
         case false:
           thisTrigger.removeClass( "trigger-slide" );
-          thisTrigger.addClass( "trigger-fixed" );
+          thisTrigger.addClass( "trigger-notslide" );
           break;
       }
 

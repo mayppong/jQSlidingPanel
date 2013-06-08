@@ -1,66 +1,116 @@
-
 /*
 
-
 */
+@media all {
+	.hidden {
+		height: 		0;
+		overflow:		hidden;
+	}
+	.breaker {
+		clear:			both;
+		height:			5em;
+	}
 
-.hidden {
-	height: 		0;
-	overflow:		hidden;
-}
-.breaker {
-	clear:			both;
-	height:			5em;
-}
-
-
-.panel {
-	background-color: blue;
-	box-shadow:  	2px 2px 5px 1px #444;
-}
-.panel-bottom, .panel-top {
-	margin:  		auto 6%;
-	position:		fixed;
-}
-.panel-top {
-	top:			0;
-}
-.panel-bottom {
-	bottom:			0;
-}
-
-.panel-intro, .panel-body {
-	margin:			auto 2em;
-}
-.panel-body {
-	overflow:		hidden;
-}
-.panel-body :first-child {
-	margin-top:		0;
+	.panel {
+		background-color: blue;
+	}
 }
 
 
-.panel-trigger{
-	background-color: red;
-}
-.trigger-slide {
-	position:		absolute;
-}
-.trigger-fixed {
-	position:		fixed;
-}
-.trigger-bottom {
-	bottom:			-0.5em;
-}
-.trigger-left {
-	left:			5em;
-}
-.trigger-right {
-	right:			5em;
-}
-.trigger-top {
-	top:			0;
+
+/*
+	PHONE, major break-point
+*/
+@media screen and (max-width: 28em) {
 
 }
 
 
+
+/*
+ *	TABLET, major break-point
+ */
+@media screen and (min-width: 28em) {
+	/* If the screen is too small, 
+	the top panel option is moved to the left and
+	the bottom panel is moved to the right. */
+	.panel {
+		box-shadow:  	2px 2px 5px 1px #444;
+		margin:			6% auto;
+		position:		fixed;
+	}
+	.panel-left, .panel-top {
+
+	}
+	.panel-bottom, .panel-right {
+
+	}
+}
+
+
+
+/*  
+ *	DESKTOP, major break-point
+ */
+@media screen and (max-width: 48em) {
+
+	/* Panel */
+	.panel-bottom, .panel-top {
+		margin:  		auto 6%;
+		position:		fixed;
+	}
+	.panel-top {
+		top:			0;
+	}
+	.panel-bottom {
+		bottom:			0;
+	}
+	.panel-left, .panel-right {
+		margin:			6% auto;
+		position:		fixed;
+	}
+	.panel-left {
+
+	}
+	.panel-right {
+
+	}
+	
+
+	/* Body */
+	.panel-intro, .panel-body {
+		margin:			auto 2em;
+	}
+	.panel-body {
+		overflow:		hidden;
+	}
+	.panel-body :first-child {
+		margin-top:		0;
+	}
+
+
+	/* Trigger */
+	.panel-trigger{
+		background-color: red;
+	}
+	.trigger-slide {
+		position:		absolute;
+	}
+	.trigger-notslide {
+		position:		fixed;
+	}
+	.trigger-bottom {
+		bottom:			-0.5em;
+	}
+	.trigger-left {
+		left:			5em;
+	}
+	.trigger-right {
+		right:			5em;
+	}
+	.trigger-top {
+		top:			0;
+
+	}
+
+}
