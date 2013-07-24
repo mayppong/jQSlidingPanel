@@ -10,7 +10,11 @@
         <link href="src/jQSlidingPanel.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript">
 			$(document).ready( function() {
-				$(".panel").slidingPanel();
+				//$(".panel").slidingPanel();
+				$(".panel").slidingPanel({
+					"panelPosition": "right",
+					"triggerVPosition": "top"
+				});
 			});
 		</script>
 	

@@ -139,38 +139,11 @@
       var thisBody    = $( options.panelBodyName, thisPanel );
       var thisTrigger = $( options.panelTriggerName, thisPanel );
 
-      thisBody.addClass("hidden");
+      //thisBody.addClass("hidden");
 
-      switch( options.panelPosition ) {
-        case "bottom":
-          thisPanel.removeClass( "panel-left panel-right panel-top" );
-          thisPanel.addClass( "panel-bottom" );
-          break;
-        case "left":
-          thisPanel.removeClass( "panel-bottom panel-right panel-top" );
-          thisPanel.addClass( "panel-bottom" );
-          break;
-        case "right":
-          thisPanel.removeClass( "panel-bottom panel-left panel-top" );
-          thisPanel.addClass( "panel-bottom" );
-          break;
-        case "top":
-          thisPanel.removeClass( "panel-bottom panel-left panel-right" );
-          thisPanel.addClass( "panel-top" );
-          break;
-      }
+      thisPanel.removeClass( "panel-bottom panel-left panel-right panel-top" );
+      thisPanel.addClass( "panel-" + options.panelPosition );
       
-      switch( options.triggerSlide ) {
-        case true:
-          thisTrigger.removeClass( "trigger-notslide" );
-          thisTrigger.addClass( "trigger-slide" );
-          break;
-        case false:
-          thisTrigger.removeClass( "trigger-slide" );
-          thisTrigger.addClass( "trigger-notslide" );
-          break;
-      }
-
       switch( options.triggerHPosition ) {
         case "left":
           thisTrigger.removeClass( "trigger-right" );
@@ -194,18 +167,52 @@
           break;  
       }
 
+      switch( options.triggerSlide ) {
+        case true:
+          thisTrigger.removeClass( "trigger-notslide" );
+          thisTrigger.addClass( "trigger-slide" );
+          break;
+        case false:
+          thisTrigger.removeClass( "trigger-slide" );
+          thisTrigger.addClass( "trigger-notslide" );
+          break;
+      }
+
     },
 
     /**
      * This attachEvents function is hacked together and doesn't have
-     * much of a forethought put into. I also couldn't do unit testing on this.
+     * much of a forethought put into. I also couldn't do unit testing on this :(
      */
     _attachEvents: function( thisPanel ) {
       var options = SlidingPanel.options();
+      var panelPosition = options.panelPosition;
 
-      // Attach trigger event for sliding
-      $( options.panelTriggerName, thisPanel ).click( function() {
-        $( options.panelBodyName, thisPanel ).toggleClass("hidden", options.delay);
+      // Removing existing event to prevent stacking and attach trigger event for sliding
+      $( options.panelTriggerName, thisPanel ).off("click").on("click", function() {
+
+        // Detect where the panel is then take action according to that.
+        if( panelPosition == "bottom" || panelPosition == "top" )
+        {
+          $( options.panelBodyName, thisPanel ).animate({
+              height: "toggle", 
+              marginBottom: "toggle",
+              marginTop: "toggle",  
+              opacity: "toggle"
+            }, options.delay 
+          );
+        }
+        else if( panelPosition == "left" || panelPosition == "right" )
+        {
+          $( options.panelBodyName, thisPanel ).animate({
+              width: "toggle", 
+              marginLeft: "toggle", 
+              marginRight: "toggle", 
+              opacity: "toggle"
+            }, options.delay 
+          );
+        }
+        
       });
     }
 

@@ -1,7 +1,6 @@
 /*
 
 */
-@media all {
 	.hidden {
 		height: 		0;
 		overflow:		hidden;
@@ -13,51 +12,13 @@
 
 	.panel {
 		background-color: blue;
-	}
-}
-
-
-
-/*
-	PHONE, major break-point
-*/
-@media screen and (max-width: 28em) {
-
-}
-
-
-
-/*
- *	TABLET, major break-point
- */
-@media screen and (min-width: 28em) {
-	/* If the screen is too small, 
-	the top panel option is moved to the left and
-	the bottom panel is moved to the right. */
-	.panel {
 		box-shadow:  	2px 2px 5px 1px #444;
-		margin:			6% auto;
-		position:		fixed;
+		position:		fixed; 	
 	}
-	.panel-left, .panel-top {
-
-	}
-	.panel-bottom, .panel-right {
-
-	}
-}
-
-
-
-/*  
- *	DESKTOP, major break-point
- */
-@media screen and (max-width: 48em) {
 
 	/* Panel */
 	.panel-bottom, .panel-top {
 		margin:  		auto 6%;
-		position:		fixed;
 	}
 	.panel-top {
 		top:			0;
@@ -65,15 +26,25 @@
 	.panel-bottom {
 		bottom:			0;
 	}
+
 	.panel-left, .panel-right {
-		margin:			6% auto;
-		position:		fixed;
+		height: 		100%;
+		margin:			1em auto;
+		max-width: 		35em;
 	}
 	.panel-left {
-
+		left: 			0;
 	}
 	.panel-right {
-
+		right: 			0;
+	}
+	.panel-left .panel-body,
+	.panel-left .panel-intro,
+	.panel-right .panel-body,
+	.panel-right .panel-intro {
+		display:		inline-block;
+		vertical-align: top;
+		width: 			10em;
 	}
 	
 
@@ -84,9 +55,12 @@
 	.panel-body {
 		overflow:		hidden;
 	}
-	.panel-body :first-child {
+	/*.panel-top .panel-body :first-child {
 		margin-top:		0;
 	}
+	.panel-left .panel-body {
+		margin: 	auto 0;
+	}*/
 
 
 	/* Trigger */
@@ -109,8 +83,8 @@
 		right:			5em;
 	}
 	.trigger-top {
-		top:			0;
+		top:			-0.5em;
 
 	}
 
-}
+
