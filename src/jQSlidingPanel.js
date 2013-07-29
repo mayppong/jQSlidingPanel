@@ -40,11 +40,14 @@
     init: function( options ) {
       // For some reason, options parameter isn't accessible from inside each()
       $.extend( SlidingPanel._options, SlidingPanel._defaults, options );
-      SlidingPanel._applyOptions( this );
-
+      
       return this.each( function( ) {
         // Make the options available
         var options = SlidingPanel.options();
+        SlidingPanel._applyOptions( this );
+
+        // Hide the panel by default
+        $(options.panelTriggerName, this).click();
 
         var data = $(this).data("slidingPanel");
         if( !data )
@@ -71,14 +74,13 @@
         var thisBody    = $( options.panelBodyName, thisPanel );
         var thisTrigger = $( options.panelTriggerName, thisPanel );
 
-        thisPanel.removeData("slidingPanel");
-
-        thisPanel.removeClass("panel-top panel-bottom panel-left panel-right");
+        thisPanel.removeData("slidingPanel").removeClass("panel-top panel-bottom panel-left panel-right");
 
         thisBody.removeClass("hidden");
 
         thisTrigger.removeClass( "trigger-bottom trigger-fixed trigger-left trigger-right trigger-slide trigger-top" );
 
+        SlidingPanel._options = {};
       });
     },
     
@@ -201,6 +203,7 @@
               opacity: "toggle"
             }, options.delay 
           );
+          // possibly trigger an event here? and add to data the state?
         }
         else if( panelPosition == "left" || panelPosition == "right" )
         {
